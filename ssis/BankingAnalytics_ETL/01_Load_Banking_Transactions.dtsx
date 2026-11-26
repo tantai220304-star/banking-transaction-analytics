@@ -1,0 +1,1162 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/10/2026 11:47:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-TRD7TQ0"
+  DTS:CreatorName="DESKTOP-TRD7TQ0\Dell"
+  DTS:DTSID="{B23515EB-16A1-4172-B2CE-D8D920694D72}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="01_Load_Banking_Transactions"
+  DTS:PackageType="5"
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{0E6B7A3A-4F80-40EC-8749-71DF1F51BEA7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BankingAnalytics_OLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A6924B35-305E-4100-BE97-A083BA4365F2}"
+      DTS:ObjectName="BankingAnalytics_OLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=BankingAnalytics;Provider=MSOLEDBSQL19.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-01_Load_Banking_Transactions-{A6924B35-305E-4100-BE97-A083BA4365F2}.\SQLEXPRESS;Trust Server Certificate=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Banking_Transactions_CSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{BF57E79A-6A1E-458B-B1AB-43B17D9B3D2C}"
+      DTS:ObjectName="Banking_Transactions_CSV">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Dell\Downloads\banking-transaction-analytics\data\processed\banking_transactions_100k.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TransactionTimestamp"
+              DTS:DTSID="{0EB47247-A397-482A-B844-76880862BA32}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FromBank"
+              DTS:DTSID="{BE9C5238-74B3-4213-98E3-63375C09D333}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FromAccount"
+              DTS:DTSID="{226F71F0-7940-4D47-9E24-DA718AB6A42D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ToBank"
+              DTS:DTSID="{A4A9FA83-4B89-44C3-B783-7C56B8EC774C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ToAccount"
+              DTS:DTSID="{1D7E30CB-9DAF-4B41-BCB6-1EFD439DD1C0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AmountReceived"
+              DTS:DTSID="{F495A4E6-E615-429D-8E59-62F35EB2A096}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ReceivingCurrency"
+              DTS:DTSID="{D86FA808-8151-4074-874F-CC877B16A1A3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AmountPaid"
+              DTS:DTSID="{D0321537-78CF-4F4E-89E8-8BC374F24AB4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PaymentCurrency"
+              DTS:DTSID="{A209F2C1-8352-455A-943B-2587B0BC0903}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PaymentFormat"
+              DTS:DTSID="{663D914E-00D1-47D7-8888-2260BFB0F949}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IsLaundering"
+              DTS:DTSID="{165CBC52-7AF8-446B-AD92-E98D19123573}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear Existing Transactions"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FA7C4DA7-1D5C-4BC2-8D5C-65608C8A4166}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear Existing Transactions"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A6924B35-305E-4100-BE97-A083BA4365F2}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Transactions;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Banking Transactions"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{09B65869-ED0F-4615-B795-7871C4F5384C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Banking Transactions"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Banking Transactions\Convert Transaction Data Types"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convert Transaction Data Types"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Banking Transactions\Convert Transaction Data Types.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Inputs[Data Conversion Input].Columns[TransactionTimestamp]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TransactionTimestamp"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[TransactionTimestamp]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Inputs[Data Conversion Input].Columns[AmountReceived]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AmountReceived"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[AmountReceived]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Inputs[Data Conversion Input].Columns[AmountPaid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AmountPaid"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[AmountPaid]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Inputs[Data Conversion Input].Columns[IsLaundering]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="IsLaundering"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[IsLaundering]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Banking Transactions\Convert Transaction Data Types.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of TransactionTimestamp]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of TransactionTimestamp]"
+                      name="Copy of TransactionTimestamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[TransactionTimestamp]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of AmountReceived]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of AmountReceived]"
+                      name="Copy of AmountReceived"
+                      precision="28"
+                      scale="8"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[AmountReceived]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of AmountPaid]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of AmountPaid]"
+                      name="Copy of AmountPaid"
+                      precision="28"
+                      scale="8"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[AmountPaid]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of IsLaundering]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of IsLaundering]"
+                      name="Copy of IsLaundering"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[IsLaundering]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Banking Transactions\Convert Transaction Data Types.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Banking Transactions\Load Transactions to SQL Server"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load Transactions to SQL Server"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Transactions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BankingAnalytics_OLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[BankingAnalytics_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[FromBank]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FromBank"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[FromBank]"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[FromBank]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[FromAccount]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FromAccount"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[FromAccount]"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[FromAccount]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[ToBank]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ToBank"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[ToBank]"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[ToBank]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[ToAccount]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ToAccount"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[ToAccount]"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[ToAccount]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[ReceivingCurrency]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ReceivingCurrency"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[ReceivingCurrency]"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[ReceivingCurrency]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[PaymentCurrency]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PaymentCurrency"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[PaymentCurrency]"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[PaymentCurrency]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[PaymentFormat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="PaymentFormat"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[PaymentFormat]"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[PaymentFormat]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[Copy of TransactionTimestamp]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Copy of TransactionTimestamp"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[TransactionTimestamp]"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of TransactionTimestamp]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[Copy of AmountReceived]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of AmountReceived"
+                      cachedPrecision="28"
+                      cachedScale="8"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[AmountReceived]"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of AmountReceived]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[Copy of AmountPaid]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of AmountPaid"
+                      cachedPrecision="28"
+                      cachedScale="8"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[AmountPaid]"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of AmountPaid]" />
+                    <inputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].Columns[Copy of IsLaundering]"
+                      cachedDataType="bool"
+                      cachedName="Copy of IsLaundering"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[IsLaundering]"
+                      lineageId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output].Columns[Copy of IsLaundering]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[TransactionID]"
+                      dataType="i8"
+                      name="TransactionID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[TransactionTimestamp]"
+                      dataType="dbTimeStamp2"
+                      name="TransactionTimestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[FromBank]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="FromBank" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[FromAccount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FromAccount" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[ToBank]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ToBank" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[ToAccount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ToAccount" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[AmountReceived]"
+                      dataType="numeric"
+                      name="AmountReceived"
+                      precision="28"
+                      scale="8" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[ReceivingCurrency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="ReceivingCurrency" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[AmountPaid]"
+                      dataType="numeric"
+                      name="AmountPaid"
+                      precision="28"
+                      scale="8" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[PaymentCurrency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PaymentCurrency" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[PaymentFormat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PaymentFormat" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[IsLaundering]"
+                      dataType="bool"
+                      name="IsLaundering" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Banking Transactions\Load Transactions to SQL Server.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Load Transactions to SQL Server.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Banking Transactions\Load Transactions to SQL Server.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Banking Transactions\Read Banking Transactions CSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Read Banking Transactions CSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Banking_Transactions_CSV]"
+                  connectionManagerRefId="Package.ConnectionManagers[Banking_Transactions_CSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[TransactionTimestamp]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[TransactionTimestamp]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[TransactionTimestamp]"
+                      name="TransactionTimestamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[FromBank]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[FromBank]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[FromBank]"
+                      name="FromBank"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[FromAccount]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[FromAccount]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[FromAccount]"
+                      name="FromAccount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[ToBank]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[ToBank]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[ToBank]"
+                      name="ToBank"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[ToAccount]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[ToAccount]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[ToAccount]"
+                      name="ToAccount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[AmountReceived]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[AmountReceived]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[AmountReceived]"
+                      name="AmountReceived"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[ReceivingCurrency]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[ReceivingCurrency]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[ReceivingCurrency]"
+                      name="ReceivingCurrency"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[AmountPaid]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[AmountPaid]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[AmountPaid]"
+                      name="AmountPaid"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[PaymentCurrency]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[PaymentCurrency]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[PaymentCurrency]"
+                      name="PaymentCurrency"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[PaymentFormat]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[PaymentFormat]"
+                      length="30"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[PaymentFormat]"
+                      name="PaymentFormat"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[IsLaundering]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[IsLaundering]"
+                      length="50"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].Columns[IsLaundering]"
+                      name="IsLaundering"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[TransactionTimestamp]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TransactionTimestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[FromBank]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FromBank" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[FromAccount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FromAccount" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[ToBank]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ToBank" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[ToAccount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ToAccount" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[AmountReceived]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AmountReceived" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[ReceivingCurrency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ReceivingCurrency" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[AmountPaid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AmountPaid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[PaymentCurrency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PaymentCurrency" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[PaymentFormat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PaymentFormat" />
+                    <externalMetadataColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output].ExternalColumns[IsLaundering]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="IsLaundering" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Banking Transactions.Paths[Data Conversion Output]"
+              endId="Package\Load Banking Transactions\Load Transactions to SQL Server.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Banking Transactions\Convert Transaction Data Types.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load Banking Transactions.Paths[Flat File Source Output]"
+              endId="Package\Load Banking Transactions\Convert Transaction Data Types.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\Load Banking Transactions\Read Banking Transactions CSV.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B53FA880-08E1-4682-A8F2-8A38C4A50C40}"
+      DTS:From="Package\Clear Existing Transactions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Banking Transactions" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="209.333333333334,42.6666666666667"
+          Id="Package\Clear Existing Transactions"
+          TopLeft="243.749989103526,10.2631577820494" />
+        <NodeLayout
+          Size="209.333333333334,42.6666666666667"
+          Id="Package\Load Banking Transactions"
+          TopLeft="144.374993545935,226.47368172389" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="348.416655770193,52.9298244487161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-99.374995557591,173.543857275174"
+              Start="0,0"
+              End="-99.374995557591,166.043857275174">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.771928637587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,82.771928637587"
+                    Point2="0,86.771928637587"
+                    Point3="-4,86.771928637587" />
+                  <mssgle:LineSegment
+                    End="-95.374995557591,86.771928637587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-95.374995557591,86.771928637587"
+                    Point2="-99.374995557591,86.771928637587"
+                    Point3="-99.374995557591,90.771928637587" />
+                  <mssgle:LineSegment
+                    End="-99.374995557591,166.043857275174" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Banking Transactions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="237.333333333334,42.6666666666667"
+          Id="Package\Load Banking Transactions\Load Transactions to SQL Server"
+          TopLeft="58.7499973736704,247.684207806792" />
+        <NodeLayout
+          Size="233.333333333334,42.6666666666667"
+          Id="Package\Load Banking Transactions\Convert Transaction Data Types"
+          TopLeft="26.8749987985939,118.36841975297" />
+        <NodeLayout
+          Size="236,42.6666666666667"
+          Id="Package\Load Banking Transactions\Read Banking Transactions CSV"
+          TopLeft="181.874991869554,21.8947366017053" />
+        <EdgeLayout
+          Id="Package\Load Banking Transactions.Paths[Flat File Source Output]"
+          TopLeft="299.874991869554,64.561403268372">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-156.333326404294,53.8070164845978"
+              Start="0,0"
+              End="-156.333326404294,46.3070164845978">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.9035082422989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.9035082422989"
+                    Point2="0,26.9035082422989"
+                    Point3="-4,26.9035082422989" />
+                  <mssgle:LineSegment
+                    End="-152.333326404294,26.9035082422989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-152.333326404294,26.9035082422989"
+                    Point2="-156.333326404294,26.9035082422989"
+                    Point3="-156.333326404294,30.9035082422989" />
+                  <mssgle:LineSegment
+                    End="-156.333326404294,46.3070164845978" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Banking Transactions.Paths[Data Conversion Output]"
+          TopLeft="143.541665465261,161.035086419636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.8749985750764,86.6491213871557"
+              Start="0,0"
+              End="33.8749985750764,79.1491213871557">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.3245606935779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.3245606935779"
+                    Point2="0,43.3245606935779"
+                    Point3="4,43.3245606935779" />
+                  <mssgle:LineSegment
+                    End="29.8749985750764,43.3245606935779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.8749985750764,43.3245606935779"
+                    Point2="33.8749985750764,43.3245606935779"
+                    Point3="33.8749985750764,47.3245606935779" />
+                  <mssgle:LineSegment
+                    End="33.8749985750764,79.1491213871557" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Banking Transactions\Load Transactions to SQL Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

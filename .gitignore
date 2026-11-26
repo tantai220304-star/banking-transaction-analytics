@@ -1,0 +1,27 @@
+
+# Raw and processed datasets
+data/raw/*.csv
+data/processed/*.csv
+
+# Python cache and local environments
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Visual Studio / SSIS build files
+.vs/
+bin/
+obj/
+*.dtproj.user
+*.suo
+
+# Local secrets and environment settings
+.env
+.env.*
+!.env.example
+
+# Operating system files
+.DS_Store
+Thumbs.db
